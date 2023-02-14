@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app import views
+#now if we want to use redirct view if someone enter home then we get home remain in home page not get error
+#if some one put index then we should remain in index home page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.TemplateView.as_view(template_name='app/home.html'),name='home'),
+    path('home/',views.RedirectView.as_view(url=('/')),name='home'),
+    path('aamir/',views.RedirectView.as_view(url=('/')),name='home'),
 ]
